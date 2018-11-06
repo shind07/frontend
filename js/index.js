@@ -6,16 +6,18 @@ $(document).ready(function() {
   $.getJSON("config.json", function(data) {
     host = data.host
 
+    $("div.dynamic").each(function() {
+      var self = $(this);
+      var url = host + "/" +  self.data('task');
 
-    $(".dynamic").each(function() {
-        var url = host + "/" +  $(this).data('task')
-        var self = $(this);
-        $.getJSON(url, function(data) {
-          self.text(JSON.stringify(data));
-          console.log(JSON.stringify(data));
-        })
-    })
+      $.getJSON(url, function(data) {
+        var str_data = JSON.stringify(data);
+        var obj = JSON.parse(str_data);
+
+        if (self.data('type') == "table") {
+          self.children("table").html(arrayToTable(data));
+        }
+      });
+    });
   });
-
-
 });
