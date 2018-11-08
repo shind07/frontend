@@ -10,6 +10,14 @@ function loadData() {
     $("div.dynamic").each(function() {
       var self = $(this);
       var url = host + "/" +  self.data('task');
+      // var data = self.data();
+      // if ("arg" in data) {
+      //   var myarg = data.arg
+      //   var args = {};
+      //   args[data.arg] = "2016";
+      //   var params = $.param(args);
+      //   url += "?" + params;
+      // }
 
       $.getJSON(url, function(data) {
         var str_data = JSON.stringify(data);
