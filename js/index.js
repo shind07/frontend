@@ -22,15 +22,28 @@ function loadData() {
       $.getJSON(url, function(data) {
         var str_data = JSON.stringify(data);
         var json_data = JSON.parse(str_data);
-        console.log(data);
-        console.log(str_data);
-        console.log(json_data);
+        var self_data = self.data();
+        var viz_type = self_data['type'];
+        // console.log('start');
+        // console.log(data);
+        // console.log(self_data);
+        // console.log('fin');
 
-        if (self.data('type') == "table") {
+        if (viz_type == "table") {
           self.children("table").html(arrayToTable(data));
         }
-        else if (self.data('type') == "chart") {
-          createLineGraph(self.attr('id'), json_data);
+
+        else if (viz_type == "chart") {
+          var chart_id = self.attr('id')
+          var chart_type = self_data['chart'];
+
+          if (chart_type == 'line') {
+            createLineGraph(chart_id, data);
+          }
+          else if (chart_type == 'scatter') {
+            createScatterPlot(chart_id, data);
+          }
+
         }
       });
     });
