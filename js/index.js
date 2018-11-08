@@ -30,23 +30,7 @@ function loadData() {
           self.children("table").html(arrayToTable(data));
         }
         else if (self.data('type') == "chart") {
-          var chart_data = google.visualization.arrayToDataTable(json_data, false);
-          var chart = new google.visualization.LineChart(document.getElementById(self.attr('id')));
-          var options = {
-            backgroundColor: {
-            //   fill:"#a2a3aa",
-              stroke:"#a2a3aa",
-            //   strokeWidth:2
-            },
-            chartArea: {
-              backgroundColor:"#a2a3aa"
-            },
-            hAxis: {
-              direction: -1
-            },
-
-          };
-          chart.draw(chart_data, options);
+          createLineGraph(self.attr('id'), json_data);
         }
       });
     });
