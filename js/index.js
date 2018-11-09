@@ -6,8 +6,9 @@ $(document).ready(function() {
 function loadData() {
   $.getJSON('config.json', function(data) {
     var host = data.host
-
+    console.log("starting to load...");
     $("div.dynamic").each(function() {
+      console.log("in a div");
       var self = $(this);
       var url = host + "/" +  self.data('task');
       // var data = self.data();
