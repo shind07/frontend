@@ -24,10 +24,10 @@ function loadData() {
         var json_data = JSON.parse(str_data);
         var self_data = self.data();
         var viz_type = self_data['type'];
-        // console.log('start');
-        // console.log(data);
-        // console.log(self_data);
-        // console.log('fin');
+        console.log('start');
+        console.log(data);
+        console.log(self_data);
+        console.log('fin');
 
         if (viz_type == "table") {
           self.children("table").html(arrayToTable(data));
