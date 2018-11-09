@@ -19,10 +19,10 @@ function loadData() {
       //   var params = $.param(args);
       //   url += "?" + params;
       // }
-
+      console.log(url);
       $.getJSON(url, function(data) {
         console.log(url);
-        
+
         var str_data = JSON.stringify(data);
         var json_data = JSON.parse(str_data);
         var self_data = self.data();
