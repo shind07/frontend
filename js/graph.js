@@ -13,6 +13,7 @@ function createLineGraph(chartID, data) {
     hAxis: {
       direction: -1
     },
+    width: '100%',
 
   };
   chart.draw(chart_data, options);
@@ -29,6 +30,7 @@ function createHistgram(chartID, data) {
     var chart = new google.visualization.Histogram(document.getElementById(chartID));
     var options = {
        histogram: { bucketSize: .05 },
+       width: '100%',
      };
     chart.draw(chart_data, options);
 }

@@ -1,11 +1,14 @@
 $(document).ready(function() {
+  $(".page-item").on("click", pageHandler);
   google.charts.load('current', {packages: ['corechart']});
   google.charts.setOnLoadCallback(loadData);
+
 });
 
 function loadData() {
   $.getJSON('config.json', function(data) {
     var host = data.host
+    var current_page = $('#currentpage').data()['page'];
     $("div.dynamic").each(function() {
       var self = $(this);
       var url = host + "/" +  self.data('task');
@@ -19,6 +22,7 @@ function loadData() {
       // }
       $.getJSON(url, function(data) {
         var self_data = self.data();
+        var page = self_data['page'];
         var viz_type = self_data['type'];
 
         if (viz_type == "table") {
@@ -43,3 +47,21 @@ function loadData() {
     });
   });
 }
+
+function pageHandler() {
+  $('.page-item').each( function() {
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+    }
+  })
+  $(this).addClass('active');
+  var page = $(this).data()['page'];
+  $("div.dynamic").each( function() {
+    if ($(this).data()['page'] == page) {
+      $(this).show();
+    }
+    else {
+      $(this).hide();
+    }
+  })
+};
