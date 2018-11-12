@@ -23,3 +23,12 @@ function createScatterPlot(chartID, data) {
   var chart = new google.visualization.ScatterChart(document.getElementById(chartID));
   chart.draw(chart_data);
 }
+
+function createHistgram(chartID, data) {
+    var chart_data = google.visualization.arrayToDataTable(data, false);
+    var chart = new google.visualization.Histogram(document.getElementById(chartID));
+    var options = {
+       histogram: { bucketSize: .05 },
+     };
+    chart.draw(chart_data, options);
+}

@@ -35,6 +35,9 @@ function loadData() {
           else if (chart_type == 'scatter') {
             createScatterPlot(chart_id, data);
           }
+          else if (chart_type == 'histogram') {
+            createHistgram(chart_id, data);
+          }
         }
       });
     });
