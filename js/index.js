@@ -40,28 +40,3 @@ function loadData() {
     });
   });
 }
-
-function loadViz(data) {
-  var self_data = $(this).data();
-//  var self_data = self.data();
-
-  var viz_type = self_data['type'];
-  console.log(data);
-  console.log(self_data);
-
-  if (viz_type == "table") {
-    self.children("table").html(arrayToTable(data));
-  }
-
-  else if (viz_type == "chart") {
-    var chart_id = self.attr('id')
-    var chart_type = self_data['chart'];
-
-    if (chart_type == 'line') {
-      createLineGraph(chart_id, data);
-    }
-    else if (chart_type == 'scatter') {
-      createScatterPlot(chart_id, data);
-    }
-  }
-};
