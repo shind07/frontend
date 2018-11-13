@@ -21,7 +21,7 @@
     <a class="navbar-brand" href="#">Hindsight</a>
 
     <!-- Links -->
-    <ul class="navbar-nav">
+    <!-- <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="#">Link 1</a>
       </li>
@@ -31,9 +31,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link 3</a>
       </li>
-    </ul>
+    </ul> -->
   </nav>
-
+  <br>
   <div class="container-fluid">
   <nav aria-label="Page navigation example">
     <ul class="pagination pg-teal justify-content-center">
@@ -46,21 +46,21 @@
 </div>
 
   <div class="container-fluid">
-
-    <div class='dynamic table-responsive' data-type="table" data-task="test" data-page='roster'>
-      <table class='table table-sm table-striped table-hover'></table>
+    <div class='row'>
+    <div class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center'>
+      <table class='table table-sm table-striped table-hover w-auto'></table>
     </div>
 
-    <div class='dynamic' id="chart1" data-type="chart" data-chart="line" data-task="rates" data-arg="Year" data-page='trends' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="rates" data-arg="Year" data-page='trends' style="display:none" align='center'>
     </div>
 
-    <div class='dynamic' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships' style="display:none" align='center'>
     </div>
 
-    <div class='dynamic' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
     </div>
 
-
+  </div>
   </div>
 
 </body>

@@ -21,6 +21,7 @@ function createScatterPlot(chartID, data) {
   var options = {
     width: defaultWidth,
     height: defaultHeight,
+    trendlines: { 0: {} } ,
   }
   chart.draw(chart_data, options);
 }
