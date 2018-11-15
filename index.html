@@ -45,10 +45,10 @@
   </nav>
 </div>
 
-  <div class="container-fluid" id=table1>
+  <div class="container-fluid" >
     <div class='row'>
-    <div class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center' style="display:none">
-      <table class='table table-sm table-striped table-hover w-auto'></table>
+    <div id=table1 class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center' style="display:none">
+      <table class='table table-sm table-striped table-hover w-auto' id='table1-viz' ></table>
     </div>
 
     <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="rates" data-arg="Year" data-page='trends' style="display:none" align='center'>
@@ -56,8 +56,8 @@
     </div>
 
     <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships'  align='center'>
-
       <select id='chart2-select1' class="form-control"></select>
+      <select id='chart2-select2' class="form-control"></select>
       <div class ='viz' id='chart2-viz'></div>
     </div>
 

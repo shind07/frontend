@@ -3,51 +3,27 @@ var host = '';
 $(document).ready(function() {
   $(".page-item").on("click", pageHandler);
   google.charts.load('current', {packages: ['corechart']});
-  google.charts.setOnLoadCallback(loadData);
+  google.charts.setOnLoadCallback(initialize);
 
 });
 
-function loadData() {
+function initialize() {
   $.getJSON('config.json', function(data) {
     host = data.host;
     var current_page = $('#currentpage').data()['page'];
     $("div.dynamic").each(function() {
       var self = $(this);
       var url = host + "/" +  self.data('task') + "/func";
-
       initViz($(this));
-
-      $.getJSON(url, function(data) {
-        var self_data = self.data();
-        var page = self_data['page'];
-        var viz_type = self_data['type'];
-
-        if (viz_type == "table") {
-          self.children("table").html(arrayToTable(data));
-        }
-
-        else if (viz_type == "chart") {
-          var chart_id = self.attr('id') + '-viz';
-          var chart_type = self_data['chart'];
-
-          if (chart_type == 'line') {
-            createLineGraph(chart_id, data);
-          }
-          else if (chart_type == 'scatter') {
-            createScatterPlot(chart_id, data);
-          }
-          else if (chart_type == 'histogram') {
-            createHistgram(chart_id, data);
-          }
-        }
-      });
     });
   });
 }
 
 function initViz(obj) {
+  // Load select buttons
   var selects = obj.children("select");
   selects.each(loadSelect);
+  loadViz(obj);
 }
 
 function loadSelect() {
@@ -60,13 +36,34 @@ function loadSelect() {
     $.each(data, function(index, value) {
       options += createOption(value, value);
     });
-    console.log(options);
     self.html(options);
   });
 }
 
-function loadViz() {
+function loadViz(obj) {
+  var obj_data = obj.data();
+  var url = host + "/" +  obj_data['task'] + "/func";
+  $.getJSON(url, function(data) {
+    var page = obj_data['page'];
+    var viz_type = obj_data['type'];
+    if (viz_type == "table") {
+      obj.children("table").html(arrayToTable(data));
+    }
 
+    else if (viz_type == "chart") {
+      var chart_id = obj.attr('id') + '-viz';
+      var chart_type = obj_data['chart'];
+      if (chart_type == 'line') {
+        createLineGraph(chart_id, data);
+      }
+      else if (chart_type == 'scatter') {
+        createScatterPlot(chart_id, data);
+      }
+      else if (chart_type == 'histogram') {
+        createHistgram(chart_id, data);
+      }
+    }
+  });
 }
 
 function createOption(value, text) {
