@@ -18,7 +18,7 @@
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand/logo -->
-    <a class="navbar-brand" href="#">Hindsight</a>
+    <a class="navbar-brand" href="#">Scott Hind - BETA</a>
 
     <!-- Links -->
     <!-- <ul class="navbar-nav">
@@ -51,19 +51,20 @@
       <table class='table table-sm table-striped table-hover w-auto' id='table1-viz' ></table>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="rates" data-arg="Year" data-page='trends' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' style="display:none" align='center'>
       <div class ='viz' id='chart1-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="nba" data-page='relationships'  align='center'>
+    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships'  align='center'>
         <select id='chart2-select1'></select>
         <select id='chart2-select2'></select>
-        <button class='submit-button'>Submit</button>
+        <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart2-viz'></div>
     </div>
 
     <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
       <select id='chart2-select1'></select>
+      <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart3-viz'></div>
     </div>
 

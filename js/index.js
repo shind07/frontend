@@ -61,6 +61,7 @@ function drawViz(obj, id, viz_type, data) {
   }
   else if (viz_type == "chart") {
     var chart_type = obj.data('chart');
+    var chart_title = obj.data('title');
     if (chart_type == 'line') {
       createLineGraph(id, data);
     }
