@@ -1,10 +1,10 @@
 var host = '';
 
 $(document).ready(function() {
-  $(".page-item").on("click", pageHandler);
   google.charts.load('current', {packages: ['corechart']});
   google.charts.setOnLoadCallback(initialize);
-
+  $(".page-item").on("click", pageHandler);
+  $(".submit-button").on('click', submitHandler);
 });
 
 function initialize() {
@@ -21,7 +21,7 @@ function initialize() {
 
 function initViz(obj) {
   // Load select buttons
-  var selects = obj.children("select");
+  var selects = obj.children('select');
   selects.each(loadSelect);
   loadViz(obj);
 }
@@ -87,3 +87,17 @@ function pageHandler() {
     }
   })
 };
+
+function submitHandler() {
+  var cols = []
+  $(this).siblings("select").each(function() {
+    cols.push(this.value);
+  })
+  var task = $(this).parent().data()['task'];
+  params = $.param({'cols':cols}, true);
+  var url = host + '/' + task + '/func?' + params
+  console.log(url);
+  $.getJSON(url, function(data) {
+
+  })
+}
