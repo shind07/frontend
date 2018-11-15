@@ -21,7 +21,17 @@ function createScatterPlot(chartID, data) {
   var options = {
     width: defaultWidth,
     height: defaultHeight,
-    trendlines: { 0: {} } ,
+    trendlines: { 0: {
+      showR2: true,
+      visibleInLegend: true,
+      }
+    },
+    hAxis: {
+     title: chart_data.getColumnLabel(0),
+   },
+   vAxis: {
+     title: chart_data.getColumnLabel(1),
+   },
   }
   chart.draw(chart_data, options);
 }

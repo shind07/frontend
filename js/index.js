@@ -30,11 +30,13 @@ function loadSelect() {
   var self = $(this);
   var task = self.parent().data()['task'];
   var select_url = host + "/" + task + "/select"
-
   $.getJSON(select_url, function(data) {
     var options = ''
+    var selected = false;
+    var select_num = self.attr('id').substr(-1);
     $.each(data, function(index, value) {
-      options += createOption(value, value);
+      selected = (index == 1 & select_num == '2') ? true : false;
+      options += createOption(value, value, selected);
     });
     self.html(options);
   });
@@ -44,30 +46,36 @@ function loadViz(obj) {
   var obj_data = obj.data();
   var url = host + "/" +  obj_data['task'] + "/func";
   $.getJSON(url, function(data) {
-    var page = obj_data['page'];
     var viz_type = obj_data['type'];
-    if (viz_type == "table") {
-      obj.children("table").html(arrayToTable(data));
+    var chart_id = obj.attr('id');
+    if (viz_type != "table") {
+      chart_id += '-viz';
     }
-
-    else if (viz_type == "chart") {
-      var chart_id = obj.attr('id') + '-viz';
-      var chart_type = obj_data['chart'];
-      if (chart_type == 'line') {
-        createLineGraph(chart_id, data);
-      }
-      else if (chart_type == 'scatter') {
-        createScatterPlot(chart_id, data);
-      }
-      else if (chart_type == 'histogram') {
-        createHistgram(chart_id, data);
-      }
-    }
+    drawViz(obj, chart_id, viz_type, data)
   });
 }
 
-function createOption(value, text) {
-  return `<option value='${value}'>${text}</option>`;
+function drawViz(obj, id, viz_type, data) {
+  if (viz_type == "table") {
+    obj.children("table").html(arrayToTable(data));
+  }
+  else if (viz_type == "chart") {
+    var chart_type = obj.data('chart');
+    if (chart_type == 'line') {
+      createLineGraph(id, data);
+    }
+    else if (chart_type == 'scatter') {
+      createScatterPlot(id, data);
+    }
+    else if (chart_type == 'histogram') {
+      createHistgram(id, data);
+    }
+  }
+}
+
+function createOption(value, text, selected=false) {
+  var add_select = (selected) ? "selected='selected' " : "";
+  return `<option ${add_select}value='${value}'>${text}</option>`;
 }
 
 function pageHandler() {
@@ -93,11 +101,14 @@ function submitHandler() {
   $(this).siblings("select").each(function() {
     cols.push(this.value);
   })
-  var task = $(this).parent().data()['task'];
   params = $.param({'cols':cols}, true);
+  var viz_div = $(this).siblings('.viz');
+  var parent = $(this).parent();
+  var task = parent.data('task');
   var url = host + '/' + task + '/func?' + params
-  console.log(url);
   $.getJSON(url, function(data) {
-
+    var viz_id = viz_div.attr('id');
+    var viz_type = parent.data('type');
+    drawViz(parent, viz_id, viz_type, data);
   })
 }
