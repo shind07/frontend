@@ -29,7 +29,8 @@ function initViz(obj) {
 function loadSelect() {
   var self = $(this);
   var task = self.parent().data()['task'];
-  var select_url = host + "/" + task + "/select"
+  var select_option = self.data('task');
+  var select_url = host + "/" + task + "/" + select_option
   $.getJSON(select_url, function(data) {
     var options = ''
     var selected = false;
