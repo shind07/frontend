@@ -1,3 +1,5 @@
+var host = '';
+
 $(document).ready(function() {
   $(".page-item").on("click", pageHandler);
   google.charts.load('current', {packages: ['corechart']});
@@ -7,19 +9,14 @@ $(document).ready(function() {
 
 function loadData() {
   $.getJSON('config.json', function(data) {
-    var host = data.host
+    host = data.host;
     var current_page = $('#currentpage').data()['page'];
     $("div.dynamic").each(function() {
       var self = $(this);
-      var url = host + "/" +  self.data('task');
-      // var data = self.data();
-      // if ("arg" in data) {
-      //   var myarg = data.arg
-      //   var args = {};
-      //   args[data.arg] = "2016";
-      //   var params = $.param(args);
-      //   url += "?" + params;
-      // }
+      var url = host + "/" +  self.data('task') + "/func";
+
+      initViz($(this));
+
       $.getJSON(url, function(data) {
         var self_data = self.data();
         var page = self_data['page'];
@@ -30,7 +27,7 @@ function loadData() {
         }
 
         else if (viz_type == "chart") {
-          var chart_id = self.attr('id')
+          var chart_id = self.attr('id') + '-viz';
           var chart_type = self_data['chart'];
 
           if (chart_type == 'line') {
@@ -46,6 +43,34 @@ function loadData() {
       });
     });
   });
+}
+
+function initViz(obj) {
+  var selects = obj.children("select");
+  selects.each(loadSelect);
+}
+
+function loadSelect() {
+  var self = $(this);
+  var task = self.parent().data()['task'];
+  var select_url = host + "/" + task + "/select"
+
+  $.getJSON(select_url, function(data) {
+    var options = ''
+    $.each(data, function(index, value) {
+      options += createOption(value, value);
+    });
+    console.log(options);
+    self.html(options);
+  });
+}
+
+function loadViz() {
+
+}
+
+function createOption(value, text) {
+  return `<option value='${value}'>${text}</option>`;
 }
 
 function pageHandler() {

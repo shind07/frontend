@@ -37,27 +37,33 @@
   <div class="container-fluid">
   <nav aria-label="Page navigation example">
     <ul class="pagination pg-teal justify-content-center">
-      <li class="page-item active" data-page='roster' id="currentpage"><a class="page-link" href="#">Roster</a></li>
+      <li class="page-item" data-page='roster' id="currentpage"><a class="page-link" href="#">Roster</a></li>
       <li class="page-item" data-page='trends'><a class="page-link" href="#">Trends</a></li>
-      <li class="page-item" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
+      <li class="page-item active" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
       <li class="page-item" data-page='distributions'><a class="page-link" href="#">Distributions</a></li>
     </ul>
   </nav>
 </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id=table1>
     <div class='row'>
-    <div class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center'>
+    <div class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center' style="display:none">
       <table class='table table-sm table-striped table-hover w-auto'></table>
     </div>
 
     <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="rates" data-arg="Year" data-page='trends' style="display:none" align='center'>
+      <div class ='viz' id='chart1-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships'  align='center'>
+
+      <select id='chart2-select1' class="form-control"></select>
+      <div class ='viz' id='chart2-viz'></div>
     </div>
 
     <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
+      <select id='chart2-select1'> <option value='test'>test</option></select>
+      <div class ='viz' id='chart3-viz'></div>
     </div>
 
   </div>
