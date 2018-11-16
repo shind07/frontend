@@ -28,6 +28,7 @@ function initViz(obj) {
 
 function loadSelect() {
   var self = $(this);
+  var multiple = (self.attr('multiple')) ? true : false;
   var task = self.parent().data()['task'];
   var select_option = self.data('task');
   var select_url = host + "/" + task + "/" + select_option
@@ -36,7 +37,7 @@ function loadSelect() {
     var selected = false;
     var select_num = self.attr('id').substr(-1);
     $.each(data, function(index, value) {
-      selected = (index == 1 & select_num == '2') ? true : false;
+      selected = ((index == 1 & select_num == '2') || multiple) ? true : false;
       options += createOption(value, value, selected);
     });
     self.html(options);
@@ -99,11 +100,18 @@ function pageHandler() {
 };
 
 function submitHandler() {
-  var cols = []
-  $(this).siblings("select").each(function() {
-    cols.push(this.value);
-  })
-  params = $.param({'cols':cols}, true);
+  var args = {};
+  var arg;
+  $(this).siblings("select").each(function(index, value) {
+    arg = $(value).data('param');
+    if (args[arg]) {
+      args[arg].push(getSelectedValues(value));
+    }
+    else {
+      args[arg] = getSelectedValues(value);
+    }
+  });
+  params = $.param(args, true);
   var viz_div = $(this).siblings('.viz');
   var parent = $(this).parent();
   var task = parent.data('task');
@@ -113,4 +121,15 @@ function submitHandler() {
     var viz_type = parent.data('type');
     drawViz(parent, viz_id, viz_type, data);
   })
+}
+
+function getSelectedValues(select_tag){
+  var result = []
+  var options = select_tag.options;
+  $.each(options, function(index, option) {
+    if (option.selected) {
+      result.push(option.value);
+    }
+  });
+  return result;
 }
