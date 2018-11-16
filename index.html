@@ -52,6 +52,9 @@
     </div>
 
     <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' style="display:none" align='center'>
+      <select id='chart1-select' data-task='select_columns'></select>
+      <!-- <select id='chart1-select' data-task='select_teams'></select> -->
+      <button class='submit-button' >Visualize</button>
       <div class ='viz' id='chart1-viz'></div>
     </div>
 
@@ -63,7 +66,7 @@
     </div>
 
     <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
-      <select id='chart2-select1' data-task='select'></select>
+      <select id='chart3-select1' data-task='select'></select>
       <button class='submit-button' >Visualize</button>
       <div class ='viz' id='chart3-viz'></div>
     </div>

@@ -6,7 +6,7 @@ function createLineGraph(chartID, data) {
   var chart = new google.visualization.LineChart(document.getElementById(chartID));
   var options = {
     hAxis: {
-      direction: -1
+      //direction: -1
     },
     width: defaultWidth,
     height: defaultHeight,
