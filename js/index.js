@@ -111,6 +111,18 @@ function submitHandler() {
       args[arg] = getSelectedValues(value);
     }
   });
+
+  //
+  var radio_param;
+  $(this).siblings('.radio').each(function(index, value) {
+    radio_param = $(this).data('param');
+    $(this).children().each(function(index, value) {
+      if (value.checked) {
+        params[radio_param] = $(this).data('grouped');
+      }
+    })
+    console.log(radio_param);
+  });
   params = $.param(args, true);
   var viz_div = $(this).siblings('.viz');
   var parent = $(this).parent();
