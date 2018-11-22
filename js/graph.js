@@ -8,8 +8,8 @@ function createLineGraph(chartID, data) {
     hAxis: {
       //direction: -1
     },
-    width: defaultWidth,
-    height: defaultHeight,
+    width: defaultWidth + 100,
+    height: defaultHeight - 100,
 
   };
   chart.draw(chart_data, options);

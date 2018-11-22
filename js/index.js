@@ -82,11 +82,16 @@ function createOption(value, text, selected=false) {
 }
 
 function pageHandler() {
+  // Take active class off current active page
   $('.page-item').each( function() {
     if ($(this).hasClass('active')) {
       $(this).removeClass('active');
     }
   })
+
+  // add active class to current active page,
+  // hide the current active page's div,
+  // then show div for active page
   $(this).addClass('active');
   var page = $(this).data()['page'];
   $("div.dynamic").each( function() {
@@ -102,6 +107,9 @@ function pageHandler() {
 function submitHandler() {
   var args = {};
   var arg;
+
+  // For each select menu next to this div,
+  // get the selected value
   $(this).siblings("select").each(function(index, value) {
     arg = $(value).data('param');
     if (args[arg]) {
@@ -112,18 +120,19 @@ function submitHandler() {
     }
   });
 
-  //
+  // Check if the radio button is selected or not
   var radio_param;
   $(this).siblings('.radio').each(function(index, value) {
     radio_param = $(this).data('param');
     $(this).children().each(function(index, value) {
       if (value.checked) {
-        params[radio_param] = $(this).data('grouped');
+        args[radio_param] = $(this).data('grouped');
       }
-    })
-    console.log(radio_param);
+    });
   });
-  params = $.param(args, true);
+
+  // Format url with params, then send data to DrawViz
+  var params = $.param(args, true);
   var viz_div = $(this).siblings('.viz');
   var parent = $(this).parent();
   var task = parent.data('task');
@@ -136,6 +145,7 @@ function submitHandler() {
 }
 
 function getSelectedValues(select_tag){
+  // get the selected values for the given multiselect dropdown
   var result = []
   var options = select_tag.options;
   $.each(options, function(index, option) {
