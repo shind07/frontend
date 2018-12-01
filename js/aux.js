@@ -1,5 +1,5 @@
 function arrayToTable(data) {
-  var table = "<tr>";
+  var table = "<thead><tr>";
 
   // Create header
   var header = data[0];
@@ -7,7 +7,7 @@ function arrayToTable(data) {
     var cell = header[i];
     table += "<th>" + cell + "</th>";
   }
-  table += "</tr>";
+  table += "</tr></thead>";
 
   // Populate table
   for (i = 1; i < data.length; i++){

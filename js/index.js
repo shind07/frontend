@@ -49,17 +49,18 @@ function loadViz(obj) {
   var url = host + "/" +  obj_data['task'] + "/func";
   $.getJSON(url, function(data) {
     var viz_type = obj_data['type'];
-    var chart_id = obj.attr('id');
-    if (viz_type != "table") {
-      chart_id += '-viz';
-    }
+    var chart_id = obj.attr('id') + '-viz';
+    // if (viz_type != "table") {
+    //   chart_id += '-viz';
+    // }
     drawViz(obj, chart_id, viz_type, data)
   });
 }
 
 function drawViz(obj, id, viz_type, data) {
   if (viz_type == "table") {
-    obj.children("table").html(arrayToTable(data));
+    $(`#${id}`).html(arrayToTable(data));
+    $(`#${id}`).DataTable()
   }
   else if (viz_type == "chart") {
     var chart_type = obj.data('chart');

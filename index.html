@@ -9,7 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="js/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src='js/aux.js'></script>
     <script src='js/graph.js'></script>
     <script src='js/index.js'></script>
@@ -37,7 +38,7 @@
   <div class="container-fluid">
   <nav aria-label="Page navigation example">
     <ul class="pagination pg-teal justify-content-center">
-      <li class="page-item" data-page='roster' id="currentpage"><a class="page-link" href="#">Roster</a></li>
+      <li class="page-item" data-page='data' id="currentpage"><a class="page-link" href="#">Data</a></li>
       <li class="page-item active" data-page='trends'><a class="page-link" href="#">Trends</a></li>
       <li class="page-item" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
       <li class="page-item" data-page='distributions'><a class="page-link" href="#">Distributions</a></li>
@@ -47,8 +48,8 @@
 
   <div class="container-fluid" >
     <div class='row'>
-    <div id=table1 class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='roster' align='center' style="display:none">
-      <table class='table table-sm table-striped table-hover w-auto' id='table1-viz' ></table>
+    <div id=table1 class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='data' align='center' style="display:none">
+      <table class='table table-sm table-striped table-hover w-auto compact nowrap' id='table1-viz' ></table>
     </div>
 
     <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends'  align='center'>
