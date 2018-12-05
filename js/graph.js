@@ -24,6 +24,15 @@ function createBarChart(chartID, data) {
   var options = {
     chart: {
       title: "bar chart"
+    },
+    width: defaultWidth + 300,
+    height: defaultHeight - 100,
+    trendlines: { 0: {
+      visibleInLegend: true,
+      }
+    },
+    hAxis: {
+      direction: -1,
     }
   }
   chart.draw(chart_data, options);
