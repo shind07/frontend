@@ -38,10 +38,11 @@
   <div class="container-fluid">
   <nav aria-label="Page navigation example">
     <ul class="pagination pg-teal justify-content-center">
-      <li class="page-item" data-page='data' id="currentpage"><a class="page-link" href="#">Data</a></li>
-      <li class="page-item active" data-page='trends'><a class="page-link" href="#">Trends</a></li>
-      <li class="page-item" data-page='trends2'><a class="page-link" href="#">Trends2</a></li>
+      <!-- <li class="page-item active" data-page='trends'><a class="page-link" href="#">Trends</a></li> -->
+      <li class="page-item active" data-page='trends2'><a class="page-link" href="#">Trends</a></li>
       <li class="page-item" data-page='shotclock'><a class="page-link" href="#">Shot Clock</a></li>
+      <li class="page-item" data-page='assists1' id="currentpage"><a class="page-link" href="#">Assist Combos</a></li>
+      <li class="page-item" data-page='assists2' id="currentpage"><a class="page-link" href="#">Assist by Location</a></li>
       <li class="page-item" data-page='actions'><a class="page-link" href="#">Shot Locations</a></li>
       <li class="page-item" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
       <li class="page-item" data-page='distributions'><a class="page-link" href="#">Distributions</a></li>
@@ -51,11 +52,15 @@
 
   <div class="container-fluid" >
     <div class='row'>
-    <div id=table1 class='dynamic table-responsive col-sm-12' data-type="table" data-task="test" data-page='data' align='center' style="display:none">
+    <div id=table1 class='dynamic table-responsive col-sm-12' data-type="table" data-task="assists_player" data-page='assists1' align='center' style="display:none">
       <table class='table table-sm table-striped table-hover w-auto compact nowrap' id='table1-viz' ></table>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' align='center'>
+    <div class='dynamic col-sm-12' id="chart7" data-title="Assist Percentage by Action" data-type="chart" data-chart="bar" data-task="assists_action" data-page='assists2' style="display:none" align='center'>
+      <div class='viz' id='chart7-viz'></div>
+    </div>
+
+    <!-- <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' align='center'>
       <select id='chart1-select1' data-task='select_columns' data-param='col'></select>
       <select id='chart1-select2' data-task='select_teams'  data-param='teams' multiple></select>
       <span class='radio' data-param='grouped'> Group Teams?
@@ -64,30 +69,30 @@
       </span>
       <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart1-viz'></div>
-    </div>
+    </div> -->
 
-    <div class='dynamic col-sm-12' id="chart6" data-type="chart" data-chart="line" data-task="ncaa_trends" data-arg="Year" data-page='trends2' align='center'>
+    <div class='dynamic col-sm-12' id="chart6" data-type="chart" data-title="NCAA Basketball Stastical Trends" data-chart="line" data-task="ncaa_trends" data-arg="Year" data-page='trends2' align='center'>
       <select id='chart1-select1' data-task='select_columns' data-param='col'></select>
       <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart6-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart4" data-type="chart" data-chart="bar" data-task="shot_clock" data-page='shotclock' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart4" data-type="chart" data-chart="bar" data-title="Points Per Shot by Shot Clock Time Remaining" data-task="shot_clock" data-page='shotclock' style="display:none" align='center'>
       <div class='viz' id='chart4-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart5" data-type="chart" data-chart="bar" data-task="actions" data-page='actions' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart5" data-type="chart" data-chart="bar" data-title="Points Per Shot by Action" data-task="actions" data-page='actions' style="display:none" align='center'>
       <div class='viz' id='chart5-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="relationships" data-page='relationships' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-title='Relationships Between Stats' data-task="relationships" data-page='relationships' style="display:none" align='center'>
         <select id='chart2-select1' data-task='select' data-param='cols'></select>
         <select id='chart2-select2' data-task='select' data-param='cols'></select>
         <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart2-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-task="histogram" data-page='distributions' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart3" data-type="chart" data-chart="histogram" data-title='Distributions by Stat' data-task="histogram" data-page='distributions' style="display:none" align='center'>
       <select id='chart3-select1' data-task='select' data-param='col'></select>
       <button class='submit-button' >Visualize</button>
       <div class ='viz' id='chart3-viz'></div>

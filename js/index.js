@@ -66,16 +66,16 @@ function drawViz(obj, id, viz_type, data) {
     var chart_type = obj.data('chart');
     var chart_title = obj.data('title');
     if (chart_type == 'line') {
-      createLineGraph(id, data);
+      createLineGraph(id, data, chart_title);
     }
     else if (chart_type == 'scatter') {
-      createScatterPlot(id, data);
+      createScatterPlot(id, data, chart_title);
     }
     else if (chart_type == 'histogram') {
-      createHistgram(id, data);
+      createHistgram(id, data, chart_title);
     }
     else if (chart_type == 'bar') {
-      createBarChart(id, data);
+      createBarChart(id, data, chart_title);
     }
   }
 }

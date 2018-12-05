@@ -1,30 +1,29 @@
 var defaultWidth = 800;
 var defaultHeight = 800;
 
-function createLineGraph(chartID, data) {
+function createLineGraph(chartID, data, title) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.LineChart(document.getElementById(chartID));
   var options = {
+    title: title,
     width: defaultWidth + 100,
     height: defaultHeight - 100,
     hAxis: {
      title: chart_data.getColumnLabel(0),
     },
     vAxis: {
-     title: chart_data.getColumnLabel(1),
+     //title: chart_data.getColumnLabel(1),
     },
 
   };
   chart.draw(chart_data, options);
 }
 
-function createBarChart(chartID, data) {
+function createBarChart(chartID, data, title) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.ColumnChart(document.getElementById(chartID));
   var options = {
-    chart: {
-      title: "bar chart"
-    },
+    title: title,
     width: defaultWidth + 300,
     height: defaultHeight - 100,
     trendlines: { 0: {
@@ -33,16 +32,19 @@ function createBarChart(chartID, data) {
     },
     hAxis: {
       direction: -1,
-    }
+    },
+    vAxis: {
+     title: chart_data.getColumnLabel(1),
+    },
   }
   chart.draw(chart_data, options);
 }
 
-function createScatterPlot(chartID, data) {
+function createScatterPlot(chartID, data, title) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.ScatterChart(document.getElementById(chartID));
   var options = {
-  //  title:title,
+    title:title,
     dataOpacity: 0.5,
     width: defaultWidth,
     height: defaultHeight,
@@ -66,10 +68,11 @@ function createScatterPlot(chartID, data) {
   chart.draw(chart_data, options);
 }
 
-function createHistgram(chartID, data) {
+function createHistgram(chartID, data, title) {
     var chart_data = google.visualization.arrayToDataTable(data, false);
     var chart = new google.visualization.Histogram(document.getElementById(chartID));
     var options = {
+      title: title,
       legend: {position: 'none'},
       histogram: { maxNumBuckets: 10},
       width: defaultWidth,
