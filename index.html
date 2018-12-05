@@ -40,6 +40,7 @@
     <ul class="pagination pg-teal justify-content-center">
       <li class="page-item" data-page='data' id="currentpage"><a class="page-link" href="#">Data</a></li>
       <li class="page-item active" data-page='trends'><a class="page-link" href="#">Trends</a></li>
+      <li class="page-item" data-page='shotclock'><a class="page-link" href="#">Shot Clock</a></li>
       <li class="page-item" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
       <li class="page-item" data-page='distributions'><a class="page-link" href="#">Distributions</a></li>
     </ul>
@@ -52,7 +53,7 @@
       <table class='table table-sm table-striped table-hover w-auto compact nowrap' id='table1-viz' ></table>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends'  align='center'>
+    <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' align='center'>
       <select id='chart1-select1' data-task='select_columns' data-param='col'></select>
       <select id='chart1-select2' data-task='select_teams'  data-param='teams' multiple></select>
       <span class='radio' data-param='grouped'> Group Teams?
@@ -61,6 +62,10 @@
       </span>
       <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart1-viz'></div>
+    </div>
+
+    <div class='dynamic col-sm-12' id="chart4" data-type="chart" data-chart="line" data-task="shot_clock" data-page='shotclock' style="display:none" align='center'>
+      <div class='viz' id='chart4-viz'></div>
     </div>
 
     <div class='dynamic col-sm-12' id="chart2" data-type="chart" data-chart="scatter" data-task="scatter" data-page='relationships' style="display:none" align='center'>

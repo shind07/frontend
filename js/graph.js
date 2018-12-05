@@ -5,11 +5,14 @@ function createLineGraph(chartID, data) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.LineChart(document.getElementById(chartID));
   var options = {
-    hAxis: {
-      //direction: -1
-    },
     width: defaultWidth + 100,
     height: defaultHeight - 100,
+    hAxis: {
+     title: chart_data.getColumnLabel(0),
+    },
+    vAxis: {
+     title: chart_data.getColumnLabel(1),
+    },
 
   };
   chart.draw(chart_data, options);
