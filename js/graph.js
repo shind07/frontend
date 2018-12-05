@@ -18,11 +18,23 @@ function createLineGraph(chartID, data) {
   chart.draw(chart_data, options);
 }
 
+function createBarChart(chartID, data) {
+  var chart_data = google.visualization.arrayToDataTable(data, false);
+  var chart = new google.visualization.ColumnChart(document.getElementById(chartID));
+  var options = {
+    chart: {
+      title: "bar chart"
+    }
+  }
+  chart.draw(chart_data, options);
+}
+
 function createScatterPlot(chartID, data) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.ScatterChart(document.getElementById(chartID));
   var options = {
   //  title:title,
+    dataOpacity: 0.5,
     width: defaultWidth,
     height: defaultHeight,
     //legend: {position: 'none'},

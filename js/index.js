@@ -74,6 +74,9 @@ function drawViz(obj, id, viz_type, data) {
     else if (chart_type == 'histogram') {
       createHistgram(id, data);
     }
+    else if (chart_type == 'bar') {
+      createBarChart(id, data);
+    }
   }
 }
 
