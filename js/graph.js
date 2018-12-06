@@ -61,6 +61,11 @@ function createBarChart(chartID, data, title) {
   var chart_data = google.visualization.arrayToDataTable(data, false);
   var chart = new google.visualization.ColumnChart(document.getElementById(chartID));
   var options = {
+    series: {
+      0: { color: '#41a2f7'},
+      1: { color: '#41edf7' },
+
+    },
     title: title,
     width: defaultWidth + 300,
     height: defaultHeight - 100,
@@ -89,7 +94,7 @@ function createScatterPlot(chartID, data, title) {
     dataOpacity: 0.5,
     width: defaultWidth,
     height: defaultHeight,
-    legend: {position: 'none'},
+    //legend: {position: 'none'},
     chartArea: {
       height:'70%',
       width:'70%'
