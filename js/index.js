@@ -77,6 +77,9 @@ function drawViz(obj, id, viz_type, data) {
     else if (chart_type == 'bar') {
       createBarChart(id, data, chart_title);
     }
+    else if (chart_type == 'area') {
+      createAreaChart(id, data, chart_title);
+    }
   }
 }
 

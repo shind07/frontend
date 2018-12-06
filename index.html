@@ -14,7 +14,7 @@
     <script src='js/aux.js'></script>
     <script src='js/graph.js'></script>
     <script src='js/index.js'></script>
-    <title>Scott Hind</title>
+    <title>CMPT 732 Final Project</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -42,8 +42,8 @@
       <li class="page-item active" data-page='trends2'><a class="page-link" href="#">Trends</a></li>
       <li class="page-item" data-page='shotclock'><a class="page-link" href="#">Shot Clock</a></li>
       <li class="page-item" data-page='assists1' id="currentpage"><a class="page-link" href="#">Assist Combos</a></li>
-      <li class="page-item" data-page='assists2' id="currentpage"><a class="page-link" href="#">Assist by Location</a></li>
-      <li class="page-item" data-page='actions'><a class="page-link" href="#">Shot Locations</a></li>
+      <!-- <li class="page-item" data-page='assists2' id="currentpage"><a class="page-link" href="#">Assist by Location</a></li> -->
+      <li class="page-item" data-page='actions'><a class="page-link" href="#">Action Breakdown</a></li>
       <li class="page-item" data-page='relationships'><a class="page-link" href="#">Relationships</a></li>
       <li class="page-item" data-page='distributions'><a class="page-link" href="#">Distributions</a></li>
     </ul>
@@ -56,9 +56,9 @@
       <table class='table table-sm table-striped table-hover w-auto compact nowrap' id='table1-viz' ></table>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart7" data-title="Assist Percentage by Action" data-type="chart" data-chart="bar" data-task="assists_action" data-page='assists2' style="display:none" align='center'>
+    <!-- <div class='dynamic col-sm-12' id="chart7" data-title="Assist Percentage by Action" data-type="chart" data-chart="bar" data-task="assists_action" data-page='assists2' style="display:none" align='center'>
       <div class='viz' id='chart7-viz'></div>
-    </div>
+    </div> -->
 
     <!-- <div class='dynamic col-sm-12' id="chart1" data-type="chart" data-chart="line" data-task="trends" data-arg="Year" data-page='trends' align='center'>
       <select id='chart1-select1' data-task='select_columns' data-param='col'></select>
@@ -71,17 +71,17 @@
       <div class ='viz' id='chart1-viz'></div>
     </div> -->
 
-    <div class='dynamic col-sm-12' id="chart6" data-type="chart" data-title="NCAA Basketball Stastical Trends" data-chart="line" data-task="ncaa_trends" data-arg="Year" data-page='trends2' align='center'>
+    <div class='dynamic col-sm-12' id="chart6" data-type="chart" data-title="NCAA Basketball Statistical Trends" data-chart="line" data-task="ncaa_trends" data-arg="Year" data-page='trends2' align='center'>
       <select id='chart1-select1' data-task='select_columns' data-param='col'></select>
       <button class='submit-button'>Visualize</button>
       <div class ='viz' id='chart6-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart4" data-type="chart" data-chart="bar" data-title="Points Per Shot by Shot Clock Time Remaining" data-task="shot_clock" data-page='shotclock' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart4" data-type="chart" data-chart="area" data-title="Points Per Shot by Shot Clock Time Remaining" data-task="shot_clock" data-page='shotclock' style="display:none" align='center'>
       <div class='viz' id='chart4-viz'></div>
     </div>
 
-    <div class='dynamic col-sm-12' id="chart5" data-type="chart" data-chart="bar" data-title="Points Per Shot by Action" data-task="actions" data-page='actions' style="display:none" align='center'>
+    <div class='dynamic col-sm-12' id="chart5" data-type="chart" data-chart="bar" data-title="Points Per Shot and Assist % by Action" data-task="actions" data-page='actions' style="display:none" align='center'>
       <div class='viz' id='chart5-viz'></div>
     </div>
 
@@ -102,14 +102,5 @@
   </div>
 
 </body>
-<!-- Footer -->
-<footer class="page-footer-dark font-small bg-dark">
 
-  <!-- Copyright -->
-  <div class="footer text-center py-3">Created by Eugene Borrisov and Scott Hind
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
 </html>
