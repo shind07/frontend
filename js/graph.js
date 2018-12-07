@@ -13,6 +13,7 @@ function createLineGraph(chartID, data, title) {
     },
     vAxis: {
      title: 'Value',
+    // title: chart_data.getColumnLabel(1),
     },
     //curveType: 'function',
     series: {
@@ -62,8 +63,8 @@ function createBarChart(chartID, data, title) {
   var chart = new google.visualization.ColumnChart(document.getElementById(chartID));
   var options = {
     series: {
-      0: { color: '#41a2f7'},
-      1: { color: '#41edf7' },
+      0: { color: '#3e6ee8'},
+      1: { color: '#429ef4' },
 
     },
     title: title,
